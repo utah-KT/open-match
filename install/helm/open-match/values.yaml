@@ -260,6 +260,8 @@ global:
     # Use this field if you need to override the port type for all services defined in this chart
     service:
       portType:
+      frontend:
+        annotasions: {}
 
   gcpProjectId: "replace_with_your_project_id"
 

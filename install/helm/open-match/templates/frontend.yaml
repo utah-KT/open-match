@@ -18,7 +18,11 @@ apiVersion: v1
 metadata:
   name: {{ include "openmatch.frontend.hostName" . }}
   namespace: {{ .Release.Namespace }}
-  annotations: {{- include "openmatch.chartmeta" . | nindent 4 }}
+  annotations:
+    {{- include "openmatch.chartmeta" . | nindent 4 }}
+{{- if .Values.global.kubernetes.service.frontend.annotations }}
+    {{- toYaml .Values.global.kubernetes.service.frontend.annotations | nindent 4 }}
+{{- end }}
   labels:
     app: {{ template "openmatch.name" . }}
     component: frontend
